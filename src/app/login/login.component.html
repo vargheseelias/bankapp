@@ -1,0 +1,28 @@
+ 
+    <div class="container">
+        <form>
+            <h1>WELCOME TO FEDARAL BANK</h1>
+            {{dem}}  <!--eg of component to view-->
+            <div class="mb-3">
+                <label for="accountnumber" class="form-label">Account number</label>
+                <!-- <input type="text" [value]="unm" (change)="getusername($event)" class="form-control" id="acno"> -->
+                                        <!--event binding-->
+                <!-- <input type="text" #accno class="form-control" id="acno"> -->
+                                    <!--^template referencing-->
+                <input type="text" [(ngModel)]="acno"  name="account number" class="form-control" id="acno">
+                                <!--^two way (propery&event) binding-->
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <!-- <input type="password" (change)="passwordchange($event)" class="form-control" id="pwd"> -->
+                <!-- <input type="password" #pswd  class="form-control" id="pwd"> -->
+                <input type="password" [(ngModel)]="pswd" name="pasword" class="form-control" id="pwd">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <a href="">sign up</a>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+        </form>
+    </div>
