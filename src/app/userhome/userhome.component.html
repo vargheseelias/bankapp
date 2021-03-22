@@ -1,12 +1,10 @@
+<form [formGroup]="depositform">
+
 <div class="container">
-
-
-  
-    <div class="row" >
+<div class="row" >
         <div class="col-4"></div>
         <div class="col-4">
-            <h1>User Login</h1>
-        <form>
+            <h1>welcome {{this.dataService.currentuser}}</h1>
             <div class="mb-3">
               <label for="kk" class="form-label"
                 >Account Number</label
@@ -16,7 +14,20 @@
                 class="form-control"
                 id="accn"
                 aria-describedby="emailHelp"
+                formControlName="acno"
+                name="userhome"
               />
+              <div
+        *ngIf="
+          (this.depositform.get('acno')?.dirty ||
+            this.depositform.get('acno')?.touched) &&
+          this.depositform.get('acno')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid account number
+            </div>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -24,7 +35,21 @@
                 type="password"
                 class="form-control"
                 id="pssw"
+                formControlName='pswd'
+                name="userhome"
+
               />
+              <div
+        *ngIf="
+          (this.depositform.get('pswd')?.dirty ||
+            this.depositform.get('pswd')?.touched) &&
+          this.depositform.get('pswd')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid password
+            </div>
             </div>
             <div class="mb-3">
               <label for="amt" class="form-label"
@@ -34,9 +59,21 @@
                 type="text"
                 class="form-control"
                 id="amdd"
-                aria-describedby="emailHelp"
-                
+                formControlName='amnt'
+                name="userhome"
+
               />
+              <div
+              *ngIf="
+                (this.depositform.get('amnt')?.dirty ||
+                  this.depositform.get('amnt')?.touched) &&
+                this.depositform.get('amnt')?.errors
+              "
+              class="error"
+              class="error"
+            >
+              invalid Amount
+                  </div>
             </div>
             <!-- <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Account balence</label>
@@ -48,10 +85,113 @@
             </div> -->
       
             <button type="submit" class="btn btn-primary" onclick="Bank.Deposit()">Deposit</button>
-            <button type="submit" class="btn btn-primary" onclick="Bank.Withdraw()">Withdrawel</button>
-          </form>
+            
     </div>
         </div>
         <div class="col-4"></div>
         
 </div>
+</form>
+
+
+
+
+<form [formGroup]="widrawform">
+
+<div class="container">
+  <br><br>
+  <div class="row" >
+      <div class="col-4"></div>
+      <div class="col-4">
+          <div class="mb-3">
+            <label for="kk" class="form-label"
+              >Account Number</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              formControlName="acno"
+              name="userhome"
+
+            />
+            
+            <div  *ngIf="
+          (this.widrawform.get('acno')?.dirty ||
+            this.widrawform.get('acno')?.touched) &&
+          this.widrawform.get('acno')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid account number
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="pssw"
+              formControlName='pswd'
+              name="userhome"
+
+            />
+            <div
+        *ngIf="
+          (this.widrawform.get('pswd')?.dirty ||
+            this.widrawform.get('pswd')?.touched) &&
+          this.widrawform.get('pswd')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid password
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="amt" class="form-label"
+              >Amount </label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="amdd"
+              formControlName="amnt"  
+              name="userhome"
+            
+            />
+            <div
+            *ngIf="
+              (this.widrawform.get('amnt')?.dirty ||
+                this.widrawform.get('amnt')?.touched) &&
+              this.widrawform.get('amnt')?.errors
+            "
+            class="error"
+            class="error"
+          >
+            invalid Amount
+                </div>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Account balence</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div> -->
+    
+         
+          <button type="submit" class="btn btn-primary" onclick="Bank.Withdraw()">Withdrawel</button>
+  </div>
+      </div>
+      <div class="col-4"></div>
+      
+</div>
+</form>
+
+

@@ -1,4 +1,4 @@
-<form (ngSubmit)="register()">
+<form [formGroup]="registerform" (ngSubmit)="register()">
   <div class="container">
     <h1>SIGN UP ON FEDARAL BANK</h1>
 
@@ -6,32 +6,70 @@
       <label for="username" class="form-label">Username</label>
       <input
         type="text"
-        [(ngModel)]="uname"
+        formControlName="uname"
         name="usrename"
         class="form-control"
-        id="acno"
+        id="uname"
       />
+
+      <!--strutural directives-->
+      <div
+        *ngIf="
+          (this.registerform.get('uname')?.dirty ||
+            this.registerform.get('uname')?.touched) &&
+          this.registerform.get('uname')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid user name
+      </div>
     </div>
 
+
+    
     <div class="mb-3">
       <label for="accountnumber" class="form-label">Account number</label>
       <input
         type="text"
-        [(ngModel)]="accno"
+        formControlName="accno"
         name="account number"
         class="form-control"
-        id="acno"
+        id="accno"
       />
+      <!--strutural directives-->
+      <div
+        *ngIf="
+          (this.registerform.get('accno')?.dirty ||
+            this.registerform.get('accno')?.touched) &&
+          this.registerform.get('accno')?.errors
+        "
+        class="error"
+        class="error"
+      >
+        invalid account number
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input
         type="password"
-        [(ngModel)]="pswd"
+        formControlName="pswd"
         name="password"
         class="form-control"
         id="pwd"
       />
+      <!--strutural directives-->
+      <div
+        *ngIf="
+          (this.registerform.get('pswd')?.dirty ||
+            this.registerform.get('pswd')?.touched) &&
+          this.registerform.get('pswd')?.errors
+        "
+        class="error"
+      >
+        invalid password
+      </div>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />

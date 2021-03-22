@@ -14,16 +14,17 @@ export class DataService {
   }
 
   constructor() { }
-  register(accno:any,name:any,password:any){
-    if(accno in this.accountDetails){
+  currentuser:any;
+  register(accno: any, name: any, password: any) {
+    if (accno in this.accountDetails) {
       alert("user exists")
       return false;
     }
-    else{
-      this.accountDetails[accno]={
+    else {
+      this.accountDetails[accno] = {
         accno,
         name,
-        balance:0,
+        balance: 0,
         password
       }
       alert("registration successful");
@@ -31,4 +32,27 @@ export class DataService {
     }
     return true;
   }
+
+  login(acno: any, password: any) {
+    if (acno in this.accountDetails) {
+      var pswd1 = this.accountDetails[acno].password
+      if (pswd1 == password) {
+        alert("log in succesful")
+        this.currentuser= this.accountDetails[acno].name
+
+        return true;
+      }
+    
+      else {
+        alert("incorrect pswrd")
+        return false;
+      }
+    }
+    else {
+        alert("no user exist")
+        return false;
+      }
+    }
+
+  
 }
